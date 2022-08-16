@@ -20,6 +20,12 @@ module BooksApp
     config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # 使用する言語
+    config.i18n.available_locales = %i(ja en)
+
+    # 言語ファイルがない場合はエラーを出すかどうか
+    config.i18n.enforce_available_locales = true
+
     # デフォルトを日本語に設定
     config.i18n.default_locale = :ja
     # config.i18n.default_locale = :en
