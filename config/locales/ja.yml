@@ -1,0 +1,13 @@
+ja:
+  view:
+    title: タイトル
+    memo: メモ
+    author: 著者
+    picture: 写真
+    show: 見る
+    edit: 修正
+    destroy: 削除
+    newBook: 新規作成
+    back: 戻る
+    editingBook: 本の修正
+    confirm: 本当にいいですか？
