@@ -1,3 +1,13 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .dropdown-item {
+    padding: 10px 5px;
+    border: 1px #999 solid;
+    text-decoration: none;
+  }
+}
