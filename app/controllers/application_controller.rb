@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # ログイン後に遷移するURL
   def after_sign_in_path_for(resource)
     '/books'
+    # "/users/#{current_user.id}"
   end
 
   # ログアウト後に遷移するURL
