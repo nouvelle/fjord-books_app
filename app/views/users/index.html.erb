@@ -5,14 +5,9 @@
   <div>
     <%= link_to 'Book List', books_path %>
     <span>Hi, <%= current_user.email %>!</span>
-    <%= link_to 'ログアウト', 
-      destroy_user_session_path,
-      class: 'dropdown-item',
-      method: :delete
-    %>
+    <%= link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
   </div>
 </div>
-
 
 <table>
   <thead>
