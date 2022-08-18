@@ -5,8 +5,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  span {
+    margin-left: 20px;
+  }
   .dropdown-item {
-    margin-left: 15px;
+    margin-left: 20px;
     padding: 10px 5px;
     border: 1px #999 solid;
     text-decoration: none;

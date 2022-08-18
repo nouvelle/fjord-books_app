@@ -4,6 +4,7 @@
   <h1><%= Book.model_name.human %></h1>
   <div>
     <%= link_to 'User List', users_path %>
+    <span>Hi, <%= current_user.email %>!</span>
     <%= link_to 'ログアウト', 
       destroy_user_session_path,
       class: 'dropdown-item',
