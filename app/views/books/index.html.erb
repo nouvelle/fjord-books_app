@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <div class="headerWrap">
-  <h1><%= Book.model_name.human %></h1>
+  <h1><%= t('views.book_list.title') %></h1>
   <div>
-    <%= link_to 'User List', users_path %>
-    <span>Hi, <%= current_user.email %>!</span>
+    <%= link_to t('views.user_list.title'), users_path %>
+    <span><%= t('views.common.greeting') %><%= current_user.email %>!</span>
     <%= link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
   </div>
 </div>

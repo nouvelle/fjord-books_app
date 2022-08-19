@@ -1,6 +1,11 @@
 ---
 en:
   activerecord:
+    attributes:
+      user:
+        post_code: 'postcode'
+        address: 'address'
+        introduction: 'introduction'
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
@@ -223,6 +228,11 @@ en:
       delete_confirm: "Are you sure?"
       title_new: "New %{name}"
       title_edit: "Editing %{name}"
+      greeting: 'Hi, '
+    user_list:
+      title: 'User List'
+    book_list:
+      title: 'Book List'
   controllers:
     common:
       notice_create: "%{name} was successfully created."
