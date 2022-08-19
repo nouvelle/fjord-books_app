@@ -62,4 +62,5 @@ gem 'net-smtp'
 
 gem 'carrierwave'
 gem 'devise'
+gem 'dotenv-rails'
 gem 'kaminari'

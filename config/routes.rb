@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :sessions => 'users/sessions',
+    :passwords     => "users/passwords",
   }
 
   devise_scope :user do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     get "/users/:id/edit", :to => "users/registrations#edit", as: 'edit_user'
     get "/users/:id", :to => "users#show", as: 'user'
     get "/users", :to => "users#index"
+    get "/users/passwords/sent", :to => "users/passwords#sent"
     get "signup", :to => "users/registrations#new"
     # get "login", :to => "users/sessions#new"
     # get "logout", :to => "users/sessions#destroy"
