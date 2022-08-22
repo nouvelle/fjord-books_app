@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th><%= t('view.title') %></th>
-      <th><%= t('view.memo') %></th>
-      <th><%= t('view.author') %></th>
-      <th><%= t('view.picture') %></th>
+      <th><%= Book.human_attribute_name(:title) %></th>
+      <th><%= Book.human_attribute_name(:memo) %></th>
+      <th><%= Book.human_attribute_name(:author) %></th>
+      <th><%= Book.human_attribute_name(:picture) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to t('view.newBook'), new_book_path %>
+<%= link_to t('view.new_book'), new_book_path %>
