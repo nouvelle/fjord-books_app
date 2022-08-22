@@ -28,6 +28,5 @@ module BooksApp
 
     # デフォルトを日本語に設定
     config.i18n.default_locale = :ja
-    # config.i18n.default_locale = :en
   end
 end
