@@ -8,14 +8,9 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get '/users/sign_out' => 'devise/session#destroy'
-
     get "/users/:id", :to => "users#show", as: 'user'
     get "/users", :to => "users#index"
     get "/users/passwords/sent", :to => "users/passwords#sent"
-    get "signup", :to => "users/registrations#new"
-    # get "login", :to => "users/sessions#new"
-    # get "logout", :to => "users/sessions#destroy"
   end
 
   resources :books
