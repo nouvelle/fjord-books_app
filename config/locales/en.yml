@@ -1,7 +1,7 @@
 en:
   activerecord:
     models:
-      book: Books
+      book: Book
     attributes:
       book:
         title: Title
@@ -17,6 +17,6 @@ en:
     editing_book: Editing Book
     confirm: Are you sure?
   notice:
-    create: Book was successfully created.
-    update: Book was successfully updated.
-    destroy: Book was successfully destroyed.
+    create: "%{target} was successfully created."
+    update: "%{target} was successfully updated."
+    destroy: "%{target} was successfully destroyed."
