@@ -17,6 +17,6 @@ ja:
     editing_book: 本の修正
     confirm: 本当にいいですか？
   notice:
-    create: 本を登録しました。
-    update: 本を更新しました。
-    destroy: 本を削除しました。
+    create: "%{target}を登録しました。"
+    update: "%{target}を更新しました。"
+    destroy: "%{target}を削除しました。"
