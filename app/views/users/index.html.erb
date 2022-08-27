@@ -26,7 +26,7 @@
         <td><%= link_to t('views.common.show'), user_path(user) %></td>
         <td>
           <% if user.email == current_user.email %>
-            <%= link_to t('views.common.edit'), edit_user_path(user) %>
+            <%= link_to t('views.common.edit'), edit_user_registration_path() %>
           <% end %>
         </td>
       </tr>
