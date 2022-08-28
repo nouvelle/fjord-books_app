@@ -33,6 +33,16 @@
   <% end %>
 </p>
 
+<p>
+  <strong><%= t('views.common.following') %>:</strong>
+  <%= @following.size %>
+</p>
+
+<p>
+  <strong><%= t('views.common.follower') %>:</strong>
+  <%= @follower.size %>
+</p>
+
 <%= render 'user_follows/follow_button', user: @user %>
 
 <% if current_user == @user %>
