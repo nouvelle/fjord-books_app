@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     followings.each do |following|
       follow_ids.push(following.follow_id)
     end
-    @users = User.where("id IN (?)", follow_ids).with_attached_avatar
+    @users = User.where('id IN (?)', follow_ids).with_attached_avatar
     @user_id = params[:user_id]
     [@users, @user_id]
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     followers.each do |follower|
       follower_ids.push(follower.user_id)
     end
-    @users = User.where("id IN (?)", follower_ids).with_attached_avatar
+    @users = User.where('id IN (?)', follower_ids).with_attached_avatar
     @user_id = params[:user_id]
     [@users, @user_id]
   end

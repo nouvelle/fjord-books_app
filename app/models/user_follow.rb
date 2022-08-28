@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserFollow < ApplicationRecord
   # 架空の follow テーブルの実態は User
   belongs_to :user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserFollowsController < ApplicationController
   before_action :set_user
 
@@ -22,6 +24,7 @@ class UserFollowsController < ApplicationController
   end
 
   private
+
   def set_user
     # フォローする対象のユーザ情報を取得
     @user = User.find(params[:follow_id])
