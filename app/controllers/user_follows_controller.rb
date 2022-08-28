@@ -6,18 +6,18 @@ class UserFollowsController < ApplicationController
     # user コントローラーの follow メソッドを実行
     following = current_user.follow(@user)
     if following.save
-      redirect_to @user, notice: 'ユーザーをフォローしました'
+      redirect_to @user, notice: t('controllers.follow.notice_create')
     else
-      redirect_to @user, alert: 'ユーザーのフォローに失敗しました'
+      redirect_to @user, alert: t('controllers.follow.error_create')
     end
   end
 
   def destroy
     following = current_user.unfollow(@user)
     if following.destroy
-      redirect_to @user, notice: 'ユーザーのフォローを解除しました'
+      redirect_to @user, notice: t('controllers.follow.notice_cancel')
     else
-      redirect_to @user, alert: 'ユーザーのフォロー解除に失敗しました'
+      redirect_to @user, alert: t('controllers.follow.error_cancel')
     end
   end
 
