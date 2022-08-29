@@ -7,9 +7,8 @@ Rails.application.routes.draw do
     :passwords     => "users/passwords",
   }
 
-  devise_scope :user do
-    get "/users/:id", :to => "users#show", as: 'user'
-    get "/users", :to => "users#index"
+  devise_scope :users do
+    resources :users, only: [:index, :show]
     get "/users/passwords/sent", :to => "users/passwords#sent"
   end
 
