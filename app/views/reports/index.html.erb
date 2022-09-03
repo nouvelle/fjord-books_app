@@ -17,8 +17,10 @@
         <td><%= report.title %></td>
         <td><%= report.contents %></td>
         <td><%= link_to 'Show', report %></td>
-        <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if report.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_report_path(report) %></td>
+          <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

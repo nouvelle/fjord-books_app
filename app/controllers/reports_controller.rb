@@ -17,6 +17,9 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    if current_user.id != @report.user_id
+      redirect_to report_url(@report), alert: '他人の投稿は修正できません'
+    end
   end
 
   # POST /reports or /reports.json
