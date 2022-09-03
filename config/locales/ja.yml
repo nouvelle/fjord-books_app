@@ -248,8 +248,9 @@ ja:
   relationships:
     create:
       notice: "フォローしました。"
-    destroy:
-      notice: "フォロー解除しました。"
+  reports:
+    edit:
+      alert: '他人の投稿は修正できません。'
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
