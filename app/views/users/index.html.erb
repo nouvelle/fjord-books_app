@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="headerWrap">
+  <h1><%= t('views.user_list.title') %></h1>
+  <div>
+    <%= link_to t('views.book_list.title'), books_path %>
+    <span><%= t('views.common.greeting') %><%= current_user.email %>!</span>
+    <%= link_to 'ログアウト', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:id) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to t('views.common.show'), user_path(user) %></td>
+        <td>
+          <% if user.email == current_user.email %>
+            <%= link_to t('views.common.edit'), edit_user_registration_path() %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

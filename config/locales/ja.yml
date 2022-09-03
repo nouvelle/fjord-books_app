@@ -1,6 +1,11 @@
 ---
 ja:
   activerecord:
+    attributes:
+      user:
+        post_code: '郵便番号'
+        address: '住所'
+        introduction: '自己紹介'
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -215,12 +220,17 @@ ja:
       delete_confirm: よろしいですか？
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      greeting: 'こんにちは、'
     pagination:
       first: '最初'
       last: '最後'
       previous: '前'
       next: '次'
       truncate: '...'
+    user_list:
+      title: 'ユーザ一覧'
+    book_list:
+      title: '本一覧'
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
