@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     # -> comments#xxx ではなく reports/comments#xxx の controller を見る
     resources :comments, module: :reports, only: %i[show create]
   end
-  resources :books
+  resources :books do
+    resources :comments, module: :books
+  end
   resources :users, only: %i[index show] do
     resource :relationships, only: %i[create destroy]
     scope module: :users do
