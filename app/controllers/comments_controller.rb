@@ -1,15 +1,15 @@
-class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+# frozen_string_literal: true
 
-  def show
-  end
+class CommentsController < ApplicationController
+  before_action :set_comment, only: %i[show edit update destroy]
+
+  def show; end
 
   def new
     @comment = Comment.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @comment = @commentable.comments.build(comment_params)
@@ -38,13 +38,14 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = @commentable.comment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = @commentable.comment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end

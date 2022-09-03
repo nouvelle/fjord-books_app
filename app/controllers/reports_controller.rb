@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[ show edit update destroy ]
+  before_action :set_report, only: %i[show edit update destroy]
 
   # GET /reports or /reports.json
   def index
@@ -19,9 +21,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    if current_user.id != @report.user_id
-      redirect_to report_url(@report), alert: t('.alert')
-    end
+    redirect_to report_url(@report), alert: t('.alert') if current_user.id != @report.user_id
   end
 
   # POST /reports or /reports.json
@@ -64,13 +64,14 @@ class ReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def report_params
-      params.require(:report).permit(:title, :contents)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report
+    @report = Report.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def report_params
+    params.require(:report).permit(:title, :contents)
+  end
 end
