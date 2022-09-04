@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followings = UserFollow.where(user_id: params[:id])
     @followers = UserFollow.where(follow_id: params[:id])
-    [@user, @followings, @followers]
   end
 
   def followings
@@ -20,7 +19,6 @@ class UsersController < ApplicationController
     end
     @users = User.where('id IN (?)', follow_ids).with_attached_avatar
     @user_id = params[:user_id]
-    [@users, @user_id]
   end
 
   def followers
@@ -31,6 +29,5 @@ class UsersController < ApplicationController
     end
     @users = User.where('id IN (?)', follower_ids).with_attached_avatar
     @user_id = params[:user_id]
-    [@users, @user_id]
   end
 end
