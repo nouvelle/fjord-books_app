@@ -1,5 +1,5 @@
 <h1><%= User.model_name.human %></h1>
 
-<%= render 'users_list.html', user: @users %>
+<%= render 'users_list', users: @users %>
 
 <%= paginate @users %>
