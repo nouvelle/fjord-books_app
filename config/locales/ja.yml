@@ -216,19 +216,30 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       title_show: "%{name}の詳細"
+      title_list: "%{name}一覧"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
+      following: フォロー
+      follower: フォロワー
+      follow: フォローする
+      unfollow: フォロー解除
     pagination:
       first: '最初'
       last: '最後'
       previous: '前'
       next: '次'
       truncate: '...'
+
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+    follow:
+      notice_create: ユーザをフォローしました
+      notice_cancel: ユーザのフォローを解除しました
+      error_create: ユーザのフォローに失敗しました
+      error_cancel: ユーザのフォロー解除に失敗しました
   layouts:
     application:
       menu: メニュー

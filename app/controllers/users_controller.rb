@@ -7,5 +7,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @followings = UserFollow.where(user_id: params[:id])
+    @followers = UserFollow.where(follow_id: params[:id])
+  end
+
+  def followings
+    @users = User.find(params[:user_id])
+    @user_id = @users.id
+  end
+
+  def followers
+    @users = User.find(params[:user_id])
+    @user_id = @users.id
   end
 end

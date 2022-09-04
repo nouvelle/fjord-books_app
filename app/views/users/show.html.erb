@@ -33,7 +33,27 @@
   <% end %>
 </p>
 
+<p>
+  <strong><%= t('views.common.following') %>数:</strong>
+  <% if @followings.size.zero? %>
+    <%= @followings.size %>
+  <% else %>
+    <%= link_to @followings.size, user_followings_path(@user) %>
+  <% end %>
+</p>
+
+<p>
+  <strong><%= t('views.common.follower') %>数:</strong>
+  <% if @followers.size.zero? %>
+    <%= @followers.size %>
+  <% else %>
+    <%= link_to @followers.size, user_followers_path(@user) %>
+  <% end %>
+</p>
+
+<%= render 'user_follows/follow_button', user: @user %>
+
 <% if current_user == @user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
 <% end %>
-<%= link_to t('views.common.back'), users_path %>
+<%= link_to "#{t('views.common.title_list', name: User.model_name.human)}へ", users_path %>

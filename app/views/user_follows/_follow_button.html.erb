@@ -1,0 +1,13 @@
+<% unless current_user == user %>
+  <% if current_user.following?(user) %>
+    <%= form_with(model: current_user.user_follows.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit t('views.common.unfollow') %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.user_follows.build) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit t('views.common.follow') %>
+    <% end %>
+  <% end %>
+<% end %>
