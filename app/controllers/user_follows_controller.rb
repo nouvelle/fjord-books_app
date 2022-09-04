@@ -5,9 +5,8 @@ class UserFollowsController < ApplicationController
 
   def create
     # current_user: ログイン中のユーザ
-    # user コントローラーの follow メソッドを実行
-    following = current_user.follow(@user)
-    if following.save
+    # user models の follow メソッドを実行. ここでDBへの保存を実施
+    if current_user.follow(@user)
       redirect_to @user, notice: t('controllers.follow.notice_create')
     else
       redirect_to @user, alert: t('controllers.follow.error_create')
@@ -15,8 +14,8 @@ class UserFollowsController < ApplicationController
   end
 
   def destroy
-    following = current_user.unfollow(@user)
-    if following.destroy
+    # user models の unfollow メソッドを実行. ここでDBからの削除を実施
+    if current_user.unfollow(@user)
       redirect_to @user, notice: t('controllers.follow.notice_cancel')
     else
       redirect_to @user, alert: t('controllers.follow.error_cancel')
