@@ -1,5 +1,5 @@
 <h1><%= t('views.common.title_list', name: t('views.common.follower')) %></h1>
 
-<%= render 'users_list.html', user: @users %>
+<%= render 'users_list.html', users: @users.followers %>
 
 <%= link_to t('views.common.back'), user_path(@user_id) %>

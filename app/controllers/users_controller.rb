@@ -12,22 +12,12 @@ class UsersController < ApplicationController
   end
 
   def followings
-    followings = UserFollow.where(user_id: params[:user_id])
-    follow_ids = []
-    followings.each do |following|
-      follow_ids.push(following.follow_id)
-    end
-    @users = User.where('id IN (?)', follow_ids).with_attached_avatar
-    @user_id = params[:user_id]
+    @users = User.find(params[:user_id])
+    @user_id = @users.id
   end
 
   def followers
-    followers = UserFollow.where(follow_id: params[:user_id])
-    follower_ids = []
-    followers.each do |follower|
-      follower_ids.push(follower.user_id)
-    end
-    @users = User.where('id IN (?)', follower_ids).with_attached_avatar
-    @user_id = params[:user_id]
+    @users = User.find(params[:user_id])
+    @user_id = @users.id
   end
 end
