@@ -4,77 +4,77 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test '#following?: ユーザをフォローしていたら true, していなければ false を返す' do
-    # me と you のアカウントを作成
-    me = User.create!(email: 'me@email.com', password: 'password')
-    you = User.create!(email: 'you@email.com', password: 'password')
+    # alice と bob のアカウントを作成
+    alice = users(:alice)
+    bob = users(:bob)
 
     # 最初は誰もフォローしていない
-    assert_not me.following?(you)
-    # me は you をフォロー
-    me.follow(you)
+    assert_not alice.following?(bob)
+    # alice は bob をフォロー
+    alice.follow(bob)
     # フォロー後、フォローしていることをチェック
-    assert me.following?(you)
+    assert alice.following?(bob)
     # フォローされている人はフォローはしていない
-    assert_not you.following?(me)
+    assert_not bob.following?(alice)
   end
 
   test '#followed_by?: ユーザにフォローされていたら true, されていなければ false を返す' do
-    # me と you のアカウントを作成
-    me = User.create!(email: 'me@email.com', password: 'password')
-    you = User.create!(email: 'you@email.com', password: 'password')
+    # alice と bob のアカウントを作成
+    alice = users(:alice)
+    bob = users(:bob)
 
     # 最初は誰からもフォローされていない
-    assert_not me.followed_by?(you)
-    # you が me をフォロー
-    you.follow(me)
-    # me が you にフォローされていることをチェック
-    assert me.followed_by?(you)
-    # you は me にフォローされていないことをチェック
-    assert_not you.followed_by?(me)
+    assert_not alice.followed_by?(bob)
+    # bob が alice をフォロー
+    bob.follow(alice)
+    # alice が bob にフォローされていることをチェック
+    assert alice.followed_by?(bob)
+    # bob は alice にフォローされていないことをチェック
+    assert_not bob.followed_by?(alice)
   end
 
   test '#follow: ユーザをフォローしていたら true, していなければ false を返す' do
-    # me と you のアカウントを作成
-    me = User.create!(email: 'me@email.com', password: 'password')
-    you = User.create!(email: 'you@email.com', password: 'password')
+    # alice と bob のアカウントを作成
+    alice = users(:alice)
+    bob = users(:bob)
 
     # 最初は誰もフォローしていない
-    assert_not me.following?(you)
-    # me は you をフォロー
-    me.follow(you)
+    assert_not alice.following?(bob)
+    # alice は bob をフォロー
+    alice.follow(bob)
     # フォロー後、フォローしていることをチェック
-    assert me.following?(you)
+    assert alice.following?(bob)
   end
 
   test '#unfollow: ユーザをアンフォローしたら true, できなければ false を返す' do
-    # me と you のアカウントを作成
-    me = User.create!(email: 'me@email.com', password: 'password')
-    you = User.create!(email: 'you@email.com', password: 'password')
+    # alice と bob のアカウントを作成
+    alice = users(:alice)
+    bob = users(:bob)
     
     # 最初は誰もアンフォローできない
-    assert_not me.unfollow(you)
-    # me は you をフォロー
-    me.follow(you)
+    assert_not alice.unfollow(bob)
+    # alice は bob をフォロー
+    alice.follow(bob)
     # フォロー後、フォローしていることをチェック
-    assert me.following?(you)
-    # me は you をアンフォローできる
-    assert me.unfollow(you)
-    # me は you を既にアンフォロー済みなので、アンフォローできない
-    assert_not me.following?(you)
+    assert alice.following?(bob)
+    # alice は bob をアンフォローできる
+    assert alice.unfollow(bob)
+    # alice は bob を既にアンフォロー済みなので、アンフォローできない
+    assert_not alice.following?(bob)
   end
 
   test '#name_or_email: name か email があれば true, なければ false を返す' do
-    # me のアカウントを作成
-    me = User.new(email: 'me@email.com', name: '')
+    # alice のアカウントを作成
+    alice = User.new(email: 'alice@example.com', name: '')
 
     # name がなくても email があれば email を返す
-    assert_equal 'me@email.com', me.name_or_email
+    assert_equal 'alice@example.com', alice.name_or_email
     
     # name を設定
-    me.name = 'me'
+    alice.name = 'alice'
 
     # name があれば name を返す
-    assert_equal 'me', me.name_or_email
+    assert_equal 'alice', alice.name_or_email
   end
 
 
