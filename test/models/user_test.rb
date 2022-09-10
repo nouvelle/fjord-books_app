@@ -50,7 +50,7 @@ class UserTest < ActiveSupport::TestCase
     # alice と bob のアカウントを作成
     alice = users(:alice)
     bob = users(:bob)
-    
+
     # 最初は誰もアンフォローできない
     assert_not alice.unfollow(bob)
     # alice は bob をフォロー
@@ -69,14 +69,11 @@ class UserTest < ActiveSupport::TestCase
 
     # name がなくても email があれば email を返す
     assert_equal 'alice@example.com', alice.name_or_email
-    
+
     # name を設定
     alice.name = 'alice'
 
     # name があれば name を返す
     assert_equal 'alice', alice.name_or_email
   end
-
-
-
 end

@@ -10,7 +10,7 @@ class ReportTest < ActiveSupport::TestCase
 
     # alice が report を作成
     alice_report = reports(:report_alice)
-    
+
     # alice が 作成した report であることをチェック
     assert alice_report.editable?(alice)
     # bob が 作成した report でないことをチェック
@@ -18,13 +18,10 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on: レポートの作成日を返す' do
-    # alice のアカウントを作成
-    alice = users(:alice)
-
     # alice が report を作成
     alice_report = reports(:report_alice)
 
     # alice が 作成した report のレポート作成日が今日であることをチェック
-    assert Date.today, alice_report.created_on
+    assert Time.zone.today, alice_report.created_on
   end
 end
