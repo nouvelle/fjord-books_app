@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(report_params)
+    if @comment.update(comment_params)
       redirect_to @commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
       render :edit
