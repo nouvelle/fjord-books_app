@@ -2,6 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :check_user, only: %i[edit update destroy]
 
   # GET /reports or /reports.json
   def index
@@ -21,7 +22,10 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    redirect_to report_url(@report), alert: t('.alert') if current_user.id != @report.user_id
+    # 下記の１行を追加するとログインユーザの持ちものから探すようにするので、
+    # 他者のものを修正しようとすると、findメソッドが ActiveRecord::RecordNotFound の例外を出す。
+    # development環境だとエラー画面になるが、production環境なら404になる
+    # @report = current_user.reports.find(params[:id])
   end
 
   # POST /reports or /reports.json
@@ -62,5 +66,9 @@ class ReportsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def report_params
     params.require(:report).permit(:title, :contents)
+  end
+
+  def check_user
+    redirect_to report_url, alert: t('controllers.common.unauthorized_operation') if current_user.id != @report.user_id
   end
 end
