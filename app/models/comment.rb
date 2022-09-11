@@ -3,6 +3,7 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true
+  validates :content, presence: true
 
   def user_name
     user = User.find(user_id)
