@@ -21,12 +21,7 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit
-    # 下記の１行を追加するとログインユーザの持ちものから探すようにするので、
-    # 他者のものを修正しようとすると、findメソッドが ActiveRecord::RecordNotFound の例外を出す。
-    # development環境だとエラー画面になるが、production環境なら404になる
-    # @report = current_user.reports.find(params[:id])
-  end
+  def edit; end
 
   # POST /reports or /reports.json
   def create
@@ -69,6 +64,10 @@ class ReportsController < ApplicationController
   end
 
   def check_user
-    redirect_to report_url, alert: t('controllers.common.unauthorized_operation') if current_user.id != @report.user_id
+    # redirect_to report_url, alert: t('controllers.common.unauthorized_operation') if current_user.id != @report.user_id
+    # 下記の１行を追加するとログインユーザの持ちものから探すようにするので、
+    # 他者のものを修正しようとすると、findメソッドが ActiveRecord::RecordNotFound の例外を出す。
+    # development環境だとエラー画面になるが、production環境なら404になる
+    @report = current_user.reports.find(params[:id])
   end
 end
