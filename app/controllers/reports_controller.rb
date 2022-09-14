@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
-  before_action :check_user, only: %i[edit update destroy]
+  before_action :set_current_user_report, only: %i[edit update destroy]
 
   # GET /reports or /reports.json
   def index
@@ -63,7 +63,7 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :contents)
   end
 
-  def check_user
+  def set_current_user_report
     # redirect_to report_url, alert: t('controllers.common.unauthorized_operation') if current_user.id != @report.user_id
     # 下記の１行を追加するとログインユーザの持ちものから探すようにするので、
     # 他者のものを修正しようとすると、findメソッドが ActiveRecord::RecordNotFound の例外を出す。
