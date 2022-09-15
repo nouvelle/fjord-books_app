@@ -245,11 +245,10 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      unauthorized_operation: "投稿したユーザのみ操作が可能です。"
   relationships:
     create:
       notice: "フォローしました。"
-    destroy:
-      notice: "フォロー解除しました。"
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
